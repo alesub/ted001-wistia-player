@@ -1,101 +1,142 @@
-import Image from "next/image";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { PlayCircle, ChevronDown } from 'lucide-react'
 
-export default function Home() {
+export default function TedMedPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="border-b">
+        <div className="container flex items-center justify-between py-4">
+          <Link href="/" className="text-2xl font-bold">
+            TEDMED
+          </Link>
+          <nav className="flex gap-6">
+            <Link href="/discover" className="text-sm">
+              Discover
+            </Link>
+            <Link href="/get-involved" className="text-sm">
+              Get Involved
+            </Link>
+            <Link href="/donate" className="text-sm">
+              Donate
+            </Link>
+          </nav>
         </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="container py-8">
+        <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">• ALL TEDMED CONTENT</div>
+        <h1 className="text-3xl font-bold mb-4">How small collective actions create a water secure world</h1>
+        
+        <div className="flex gap-2 mb-6">
+          <Badge variant="secondary">TALK</Badge>
+          <Badge variant="secondary">CLIMATE</Badge>
+          <Badge variant="secondary">CEO</Badge>
+          <Badge variant="secondary">TED</Badge>
+        </div>
+
+        <div className="grid md:grid-cols-5 gap-8">
+          {/* Video Player */}
+          <div className="md:col-span-3 relative aspect-video bg-sage-50 rounded-lg flex items-center justify-center">
+            <Button size="icon" variant="ghost" className="h-16 w-16">
+              <PlayCircle className="h-16 w-16" />
+            </Button>
+          </div>
+
+          {/* Transcript */}
+          <div className="md:col-span-2">
+            <div className="flex items-center justify-between mb-4">
+              <Button variant="outline" size="sm">
+                SHARE <ChevronDown className="ml-2 h-4 w-4" />
+              </Button>
+              <div className="flex items-center gap-2">
+                <span className="text-sm">CLOSE TRANSCRIPT</span>
+                <select className="text-sm border rounded p-1">
+                  <option>English</option>
+                </select>
+              </div>
+            </div>
+            <div className="h-[300px] overflow-y-auto bg-sage-50 rounded-lg p-4">
+              <p className="text-sm text-gray-600 mb-4">
+                As a kid growing up at a conscious legacy, life revolved around water. My earliest memories are being mesmerized with the Mississippi River...
+              </p>
+              <p className="text-sm text-gray-600">
+                Located here a football field&apos;s worth of land every 100 minutes due to coastal erosion. It&apos;s an unimaginable large amount to sink...
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* About Section */}
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold mb-4">About This Talk</h2>
+          <p className="text-gray-600">
+            Water is a central life force for our Earth and its people. But Water Conservationist Jyoti 
+            Sharma knows that while there is no shortage in discussing water scarcity, there is a lack of clean 
+            water or a shortage of water altogether...
+          </p>
+        </section>
+
+        {/* Related Content */}
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold mb-6">Explore more related to...</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Card key={i}>
+                <CardContent className="p-0">
+                  <div className="aspect-video bg-sage-50" />
+                  <div className="p-4">
+                    <h3 className="font-medium text-sm">Using neural dust to eavesdrop on our organs</h3>
+                    <div className="flex gap-2 mt-2">
+                      <Badge variant="secondary" className="text-xs">TALK</Badge>
+                      <Badge variant="secondary" className="text-xs">TED STAGE</Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="border-t mt-16">
+        <div className="container py-8">
+          <div className="grid grid-cols-4 gap-8">
+            <div>
+              <h3 className="font-semibold mb-4">FOLLOW ALONG</h3>
+              <div className="space-y-2">
+                <Link href="#" className="block text-sm text-gray-600">Newsletter</Link>
+                <Link href="#" className="block text-sm text-gray-600">Instagram</Link>
+                <Link href="#" className="block text-sm text-gray-600">Facebook</Link>
+                <Link href="#" className="block text-sm text-gray-600">X (Twitter)</Link>
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">EXPLORE</h3>
+              <div className="space-y-2">
+                <Link href="#" className="block text-sm text-gray-600">Search by Tag</Link>
+                <Link href="#" className="block text-sm text-gray-600">Playlists</Link>
+                <Link href="#" className="block text-sm text-gray-600">Talks</Link>
+                <Link href="#" className="block text-sm text-gray-600">People</Link>
+              </div>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-4">TEDMED</h3>
+              <div className="space-y-2">
+                <Link href="#" className="block text-sm text-gray-600">About</Link>
+                <Link href="#" className="block text-sm text-gray-600">Donate</Link>
+                <Link href="#" className="block text-sm text-gray-600">Contact</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
+
