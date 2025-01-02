@@ -2,8 +2,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { PlayCircle, ChevronDown, ExternalLink } from 'lucide-react'
-import Image from "next/image"
+import { PlayCircle, ChevronDown } from 'lucide-react'
 
 export default function TedMedPage() {
   return (
@@ -66,7 +65,7 @@ export default function TedMedPage() {
                 As a kid growing up at a conscious legacy, life revolved around water. My earliest memories are being mesmerized with the Mississippi River...
               </p>
               <p className="text-sm text-gray-600">
-                Located here a football field's worth of land every 100 minutes due to coastal erosion. It's an unimaginable large amount to sink...
+                Located here a football field&apos;s worth of land every 100 minutes due to coastal erosion. It&apos;s an unimaginable large amount to sink...
               </p>
             </div>
           </div>
