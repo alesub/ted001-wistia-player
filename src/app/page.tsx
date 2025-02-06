@@ -1,12 +1,26 @@
+"use client";
+
 import Link from "next/link"
+import Script from 'next/script'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { PlayCircle, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
+import { useState } from 'react'
 
 export default function TedMedPage() {
+  const [isTranscriptVisible, setIsTranscriptVisible] = useState(true);
+
+  const toggleTranscript = () => {
+    setIsTranscriptVisible(!isTranscriptVisible);
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <Script src="https://fast.wistia.com/player.js" async />
+      <Script src="https://fast.wistia.com/embed/ozw7h0jrda.js" async type="module" />
+      <Script src="https://fast.wistia.net/assets/external/transcript.js" async />
+
       {/* Header */}
       <header className="border-b">
         <div className="container flex items-center justify-between py-4">
@@ -31,7 +45,7 @@ export default function TedMedPage() {
       <main className="container py-8">
         <div className="text-xs uppercase tracking-wide text-gray-500 mb-2">• ALL TEDMED CONTENT</div>
         <h1 className="text-3xl font-bold mb-4">How small collective actions create a water secure world</h1>
-        
+
         <div className="flex gap-2 mb-6">
           <Badge variant="secondary">TALK</Badge>
           <Badge variant="secondary">CLIMATE</Badge>
@@ -41,33 +55,27 @@ export default function TedMedPage() {
 
         <div className="grid md:grid-cols-5 gap-8">
           {/* Video Player */}
-          <div className="md:col-span-3 relative aspect-video bg-sage-50 rounded-lg flex items-center justify-center">
-            <Button size="icon" variant="ghost" className="h-16 w-16">
-              <PlayCircle className="h-16 w-16" />
-            </Button>
-          </div>
+          <div className={`video-container relative aspect-video bg-sage-50 rounded-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${isTranscriptVisible ? 'md:col-span-3' : 'md:col-span-5'}`}>
+            <wistia-player media-id="ozw7h0jrda" class="mb-4"></wistia-player>
 
-          {/* Transcript */}
-          <div className="md:col-span-2">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 w-full">
               <Button variant="outline" size="sm">
                 SHARE <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
               <div className="flex items-center gap-2">
-                <span className="text-sm">CLOSE TRANSCRIPT</span>
+                <Button variant="outline" size="sm" onClick={toggleTranscript}>
+                  {isTranscriptVisible ? 'Close Transcript' : 'Show Transcript'}
+                </Button>
                 <select className="text-sm border rounded p-1">
                   <option>English</option>
                 </select>
               </div>
             </div>
-            <div className="h-[300px] overflow-y-auto bg-sage-50 rounded-lg p-4">
-              <p className="text-sm text-gray-600 mb-4">
-                As a kid growing up at a conscious legacy, life revolved around water. My earliest memories are being mesmerized with the Mississippi River...
-              </p>
-              <p className="text-sm text-gray-600">
-                Located here a football field&apos;s worth of land every 100 minutes due to coastal erosion. It&apos;s an unimaginable large amount to sink...
-              </p>
-            </div>
+          </div>
+
+          {/* Transcript */}
+          <div className={`transcript-container h-full flex flex-col transition-all duration-500 ease-in-out ${isTranscriptVisible ? 'col-span-2 max-w-full opacity-100' : 'max-w-0 opacity-0 overflow-hidden'}`}>
+            <wistia-transcript class="transcript bg-gray-100 h-[488px] overflow-y-auto bg-sage-50 rounded-lg p-4" media-id="ozw7h0jrda" ></wistia-transcript>
           </div>
         </div>
 
