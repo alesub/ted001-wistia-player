@@ -6,11 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ChevronDown } from 'lucide-react'
-import { useState } from 'react'
 
 export default function VimeoPlayer() {
-  const [isTranscriptVisible, setIsTranscriptVisible] = useState(true);
-
   return (
     <div className="min-h-screen bg-white">
       <Script src="https://player.vimeo.com/api/player.js" async />
