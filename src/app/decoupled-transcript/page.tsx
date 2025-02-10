@@ -6,7 +6,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ChevronRight } from "lucide-react"
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
