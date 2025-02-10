@@ -1,12 +1,18 @@
-declare namespace JSX {
-  interface IntrinsicElements {
-    'wistia-player': {
-      'media-id': string;
-      'class': string;
-    };
-    'wistia-transcript': {
-      'media-id': string;
-      'class': string;
-    };
+import { DetailedHTMLProps, HTMLAttributes } from "react";
+
+declare global {
+  namespace React {
+    namespace JSX {
+      interface IntrinsicElements {
+        "wistia-player": DetailedHTMLProps<
+          HTMLAttributes<HTMLElement>,
+          HTMLElement
+        >;
+        "wistia-transcript": DetailedHTMLProps<
+          HTMLAttributes<HTMLElement>,
+          HTMLElement
+        >;
+      }
+    }
   }
 }
