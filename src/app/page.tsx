@@ -18,7 +18,7 @@ export default function TedMedPage() {
   return (
     <div className="min-h-screen bg-white">
       <Script src="https://fast.wistia.com/player.js" async />
-      <Script src="https://fast.wistia.com/embed/ozw7h0jrda.js" async type="module" />
+      <Script src="https://fast.wistia.com/embed/zy050z7qwa.js" async type="module" />
       <Script src="https://fast.wistia.net/assets/external/transcript.js" async />
 
       {/* Header */}
@@ -56,7 +56,7 @@ export default function TedMedPage() {
         <div className="grid md:grid-cols-5 gap-8">
           {/* Video Player */}
           <div className={`video-container relative aspect-video bg-sage-50 rounded-lg flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${isTranscriptVisible ? 'md:col-span-3' : 'md:col-span-5'}`}>
-            <wistia-player media-id="ozw7h0jrda" className="mb-4"></wistia-player>
+            <wistia-player media-id="zy050z7qwa" className="mb-4"></wistia-player>
 
             <div className="flex items-center justify-between mb-4 w-full">
               <Button variant="outline" size="sm">
@@ -75,7 +75,7 @@ export default function TedMedPage() {
 
           {/* Transcript */}
           <div className={`transcript-container h-full flex flex-col transition-all duration-500 ease-in-out ${isTranscriptVisible ? 'col-span-2 max-w-full opacity-100' : 'max-w-0 opacity-0 overflow-hidden'}`}>
-            <wistia-transcript className="transcript bg-gray-100 h-[488px] overflow-y-auto bg-sage-50 rounded-lg p-4" media-id="ozw7h0jrda" ></wistia-transcript>
+            <wistia-transcript className="transcript bg-gray-100 h-[488px] overflow-y-auto bg-sage-50 rounded-lg p-4" media-id="zy050z7qwa" ></wistia-transcript>
           </div>
         </div>
 
